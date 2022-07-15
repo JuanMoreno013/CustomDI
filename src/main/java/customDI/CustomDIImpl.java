@@ -4,11 +4,7 @@ import customDI.annotations.CustomBean;
 import customDI.annotations.CustomInject;
 import lombok.Getter;
 import org.reflections.Reflections;
-import org.reflections.scanners.ResourcesScanner;
 import org.reflections.scanners.SubTypesScanner;
-import org.reflections.util.ClasspathHelper;
-import org.reflections.util.ConfigurationBuilder;
-import org.reflections.util.FilterBuilder;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
@@ -34,29 +30,8 @@ public class CustomDIImpl {
 
     private Set<Class<?>> getClasses() {
 
-//        Set<?> classes;
-
-//        List<ClassLoader> classLoadersList = new LinkedList<>();
-//        classLoadersList.add(ClasspathHelper.contextClassLoader());
-//        classLoadersList.add(ClasspathHelper.staticClassLoader());
-
-//        Reflections reflections = new Reflections(new ConfigurationBuilder()
-//                .setScanners(new SubTypesScanner(false), new ResourcesScanner())
-//                .setUrls(ClasspathHelper.forClassLoader(classLoadersList.toArray(new ClassLoader[0])))
-//                .filterInputsBy(new FilterBuilder().includePackage("customDI")), new SubTypesScanner(false));
-
-
-//        Reflections reflections = new Reflections("customDI");
-
-//        classes =  new Reflections("customDI");
-//        Reflections reflections = new Reflections(new ConfigurationBuilder().forPackages("customDI"), new SubTypesScanner(false));
-
         Reflections reflections = new Reflections("customDI", new SubTypesScanner(false));
         return reflections.getSubTypesOf(Object.class);
-
-//        return reflections.getSubTypesOf();
-
-//        return classes;
     }
 
     private Set<Class<?>> getBeanClasses(Set<Class<?>> classes) {
@@ -98,7 +73,6 @@ public class CustomDIImpl {
                         .filter(field -> field.isAnnotationPresent(CustomInject.class))
                         .forEach(field -> {
                             field.setAccessible(true);
-
                             try {
                                 field.set(obj, allBeans.get(field.getType().getSimpleName()));
 

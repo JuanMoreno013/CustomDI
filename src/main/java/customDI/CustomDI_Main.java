@@ -6,10 +6,10 @@ public class CustomDI_Main {
         CustomDIImpl customDI = new CustomDIImpl();
 
         System.out.println("Beans");
-                customDI.getAllBeans().forEach((name,bean) -> System.out.println(bean));
+        customDI.getAllBeans().forEach((name, bean) -> System.out.println(bean));
 
         System.out.println("Dependents");
-                customDI.getBeanDependents().forEach((name,bean) -> System.out.println(bean));
+        customDI.getBeanDependents().forEach((name, bean) -> System.out.println(bean));
 
     }
 }
