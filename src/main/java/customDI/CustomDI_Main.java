@@ -8,7 +8,7 @@ public class CustomDI_Main {
         System.out.println("Beans");
         customDI.getAllBeans().forEach((name, bean) -> System.out.println(bean));
 
-        System.out.println("Dependents");
+        System.out.println(" \n Elements were injected ");
         customDI.getBeanDependents().forEach((name, bean) -> System.out.println(bean));
 
     }

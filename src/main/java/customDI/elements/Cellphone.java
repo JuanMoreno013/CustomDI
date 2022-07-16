@@ -7,10 +7,10 @@ import lombok.ToString;
 public class Cellphone {
 
     @CustomInject
-    private Processor intelProcessor;
+    private Processor processor;
 
     @CustomInject
-    private Ram ram;
+    private Ram doubleRam;
 
     @CustomInject
     private Memory memory;

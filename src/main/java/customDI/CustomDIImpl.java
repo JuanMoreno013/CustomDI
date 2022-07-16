@@ -80,6 +80,7 @@ public class CustomDIImpl {
                                 throw new RuntimeException(e);
                             }
                         });
+                beanDependents.put(classDependents.getSimpleName(), obj);
             } catch (InvocationTargetException | NoSuchMethodException | InstantiationException |
                      IllegalAccessException e) {
                 throw new RuntimeException(e);

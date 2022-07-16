@@ -7,10 +7,10 @@ import lombok.ToString;
 public class Tablet {
 
     @CustomInject
-    private Processor intelProcessor;
+    private Processor processor;
 
     @CustomInject
-    private Ram doubleRam64;
+    private Ram doubleRam;
 
     @CustomInject
     private Memory memory;
